@@ -249,7 +249,15 @@
             </div>
         </div>
     </section>
-
+<section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-box">
+                <p>📞 <a href="tel:+916268281490" style="color: var(--accent-gold);">+91 6268281490</a></p>
+                <p>✉️ <a href="mailto:anitajha513@gmail.com" style="color: var(--accent-gold);">anitajha513@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
     <section id="features" class="section scroll-reveal">
         <div class="container">
             <h2 class="section-title">Why Anita Collections?</h2>
@@ -372,7 +380,29 @@
     </div>
 
     <button id="backToTop" title="Go to top">↑</button>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mobile Menu
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    mobileMenuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+                });
+            }
 
+            // WhatsApp Function
+            window.buyOnWhatsapp = (sareeName, price) => {
+                let phoneNumber = "916268281490";
+                let message = `Hello Anita Collections! 👋\n\nI want to buy:\n🛍️ *Product:* ${sareeName}\n💰 *Price:* ₹${price}\n\nPlease confirm availability.`;
+                let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            };
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
