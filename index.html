@@ -1,105 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahul Jha | Portfolio & Resume</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anita Collections | The Essence of India</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- CSS START --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #ffffff;
+            --text-muted: #b0b0b0;
+            --accent-pink: #ff4081;
+            --accent-gold: #ffd700;
+            --gradient-main: linear-gradient(135deg, #ff4081, #ff80ab);
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0; border-bottom: 1px solid #333;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: bold; color: white; }
+        .logo span { color: var(--accent-pink); }
+
+        .nav-menu { display: flex; align-items: center; }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .nav-links a { font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-pink); }
+
+        /* LOGIN / SIGNUP BUTTONS */
+        .login-btn { color: var(--accent-gold); border: 1px solid var(--accent-gold); padding: 5px 15px; border-radius: 4px; }
+        .signup-btn { background: var(--accent-gold); color: black; padding: 6px 16px; border-radius: 4px; font-weight: bold; }
+
+        .mobile-menu-icon { display: none; font-size: 1.8rem; cursor: pointer; color: white; }
+
+        /* --- HERO SECTION (Background Image Added) --- */
+        .hero {
+            height: 90vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative;
+            
+            /* यहाँ saree1.jpg बैकग्राउंड में सेट की गई है */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('saree1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .hero-content { z-index: 2; max-width: 800px; padding: 20px; }
+        .hero h1 { font-family: var(--font-heading); font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; color: #ddd; margin-bottom: 30px; font-style: italic; }
+
+        /* --- SECTIONS --- */
+        .section { padding: 60px 0; }
+        .section-title { font-family: var(--font-heading); font-size: 2.5rem; text-align: center; margin-bottom: 15px; color: var(--accent-gold); }
+        .section-desc { text-align: center; color: var(--text-muted); margin-bottom: 40px; }
+
+        /* --- PRODUCT GRID (Responsive) --- */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        
+        .product-card { background: white; border-radius: 8px; overflow: hidden; transition: 0.3s; position: relative; color: #333; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(255, 64, 129, 0.3); }
+
+        .product-image { height: 350px; width: 100%; position: relative; overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+
+        .discount-tag { position: absolute; top: 10px; left: 10px; background: #cc0000; color: white; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; border-radius: 4px; z-index: 2; }
+
+        .product-info { padding: 15px; text-align: left; }
+        .product-info h3 { font-size: 1.1rem; margin-bottom: 3px; color: #000; }
+        .sub-text { font-size: 0.85rem; color: #666; margin-bottom: 8px; }
+        .price { font-size: 1.4rem; font-weight: bold; color: #000; margin-right: 10px; }
+        .mrp { text-decoration: line-through; color: #666; font-size: 0.9rem; }
+
+        /* Buttons */
+        .btn-primary { padding: 10px 20px; background: var(--gradient-main); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; width: 100%; }
+        .btn-hero { padding: 12px 30px; background: var(--accent-gold); color: black; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+
+        /* Contact & Footer */
+        .contact-box { background: var(--bg-card); padding: 40px; border-radius: 10px; text-align: center; border: 1px solid #333; }
+        footer { background: black; padding: 20px; text-align: center; border-top: 1px solid #333; color: #777; margin-top: 50px; }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .mobile-menu-icon { display: block; }
+            .nav-menu {
+                position: fixed; right: -100%; top: 60px; width: 100%; height: 100vh;
+                background: #111; transition: 0.3s; display: flex; flex-direction: column;
+                align-items: center; justify-content: flex-start; padding-top: 50px; z-index: 999;
+            }
+            .nav-menu.active { right: 0; }
+            .nav-links { flex-direction: column; width: 100%; gap: 25px; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+        /* --- CSS END --- */
+    </style>
+</head>
 <body>
 
-  <!-- Header Section -->
-  <h1>Rahul Jha</h1>
-  <p>Bachelor of Computer Applications | Front-End Developer & UI/UX Designer</p>
-  <p>📞 9407494658 | 📧 work.rahuljhajha@gmail.com | 📍 Ujjain, MP</p>
-  <p>
-    <a href="https://www.instagram.com/rahuljha413" target="_blank">Instagram</a>
-    <a href=" https://github.com/rahuljhajha4133-gif" target="_blank">github</a>
-  </p>
+    <header id="navbar">
+        <div class="container nav-container">
+            <div class="logo">Anita <span>Collections</span></div>
+            
+            <div class="mobile-menu-icon" id="mobileMenuBtn">☰</div>
 
-  <hr>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#collection" class="nav-link">Sarees</a></li>
+                    <li><a href="#features" class="nav-link">Why Us</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#payment" class="nav-btn nav-link">Pay Now</a></li>
+                    <li><a href="login.html" class="login-btn">Login</a></li>
+                    <li><a href="signup.html" class="signup-btn">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Objective -->
-  <h2>Objective</h2>
-  <p>
-    Enthusiastic and creative Computer Application graduate with a passion for front-end web development, 
-    UI/UX design, and visual media creation. Seeking an opportunity to work in a dynamic organization 
-    where I can apply my design thinking, coding skills, and problem-solving ability to build meaningful 
-    digital experiences.
-  </p>
+    <section id="home" class="hero">
+        <div class="hero-bg-gradient"></div>
+        <div class="container hero-content">
+            <h1 class="fade-in-up">"Six Yards of Grace, <br>Crafted Just for You."</h1>
+            <p class="fade-in-up delay-1">
+                Drape yourself in the timeless elegance of India. <br>
+                <em>Aapki khoobsurati, hamari pehchan.</em>
+            </p>
+            <div class="cta-group fade-in-up delay-2">
+                <button class="btn btn-primary" onclick="scrollToSection('collection')">Explore Collection</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="arrow">↓</div>
+        </div>
+    </section>
 
-  <hr>
+    <section id="collection" class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Trending Sarees</h2>
+            <p class="section-desc">Handpicked styles for weddings, parties, and daily wear.</p>
+            
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="saree1.jpg" alt="Emerald Green Royal Silk Saree">
+                        <span class="discount-tag">New Arrival</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Emerald Green Royal Silk</h3>
+                        <p class="sub-text">Heavy Border Work | Wedding Special</p>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span> <span class="count"></span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price">₹3,499</span>
+                            <span class="mrp">₹6,500</span>
+                        </div>
+                        <button class="btn-primary" onclick="buyOnWhatsapp('Emerald Green Royal Silk', '3,499')">Buy on WhatsApp 💬</button>
+                    </div>
+                </div>
 
-  <!-- Education -->
-  <h2>Education</h2>
-  <p><b>Bachelor of Computer Applications (BCA)</b> – Vikram University, Ujjain (2021–2024)</p>
-  <p><b>Higher Secondary (12th)</b> – Kalidas Montessori H.S. School, Ujjain (2020–2021)</p>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="saree2.jpg" alt="Regal Purple Silk Saree">
+                        <span class="discount-tag">New Arrival</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Regal Purple Silk</h3>
+                        <p class="sub-text">Intricate Zari Work | Party Wear</p>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span> <span class="count"></span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price">₹3,499</span>
+                            <span class="mrp">₹6,000</span>
+                        </div>
+                         <button class="btn-primary" onclick="buyOnWhatsapp('Emerald Green Royal Silk', '3,499')">Buy on WhatsApp 💬</button>
+                    </div>
+                </div>
 
-  <hr>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="saree3.jpg" alt="Lavender Georgette Saree">
+                        <span class="discount-tag">New Arrival</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Lavender Leaf Embroidery</h3>
+                        <p class="sub-text">Lightweight Georgette | Modern Look</p>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span> <span class="count"></span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price">₹2,199</span>
+                            <span class="mrp">₹3,999</span>
+                        </div>
+                         <button class="btn-primary" onclick="buyOnWhatsapp('Emerald Green Royal Silk', '3,499')">Buy on WhatsApp 💬</button>
+                    </div>
+                </div>
 
-  <!-- Technical Skills -->
-  <h2>Technical Skills</h2>
-  <ul>
-    <li><b>Web Development:</b> HTML, CSS, Responsive Design, High Animation Websites</li>
-    <li><b>Design & Creativity:</b> Canva, Microsoft Design, UI/UX Design, Figma, Adobe XD</li>
-    <li><b>Video Editing:</b> VSDC Video Editor</li>
-    <li><b>Programming:</b> Python (Basics), C (Basics)</li>
-    <li><b>Tools:</b> Git, Visual Studio Code, Chrome DevTools</li>
-  </ul>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="saree4.jpg" alt="Peach Designer Saree">
+                        <span class="discount-tag">New Arrival</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Peach Soft Silk Designer</h3>
+                        <p class="sub-text">Elegant Motifs | Festive Wear</p>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span> <span class="count"></span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price">₹2,199</span>
+                            <span class="mrp">₹4,500</span>
+                        </div>
+                        <button class="btn-primary" onclick="buyOnWhatsapp('Emerald Green Royal Silk', '3,499')">Buy on WhatsApp 💬</button>
+                    </div>
+                </div>
 
-  <hr>
+            </div>
+        </div>
+    </section>
 
-  <!-- Soft Skills -->
-  <h2>Soft Skills</h2>
-  <ul>
-    <li>Strong Creativity & Imagination</li>
-    <li>Team Collaboration & Communication</li>
-    <li>Quick Learning Ability</li>
-    <li>Problem Solving & Logical Thinking</li>
-    <li>Time Management</li>
-  </ul>
+    <section id="features" class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Why Anita Collections?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">✨</div>
+                    <h3>Premium Quality</h3>
+                    <p>100% Original fabrics checked by experts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🚚</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Shipping across India within 4-5 days.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">❤️</div>
+                    <h3>Happiness Guaranteed</h3>
+                    <p>We ensure you smile with every drape. Quality you can trust forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <hr>
+    <section id="contact" class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-box">
+                <p>We are here to help you 24/7.</p>
+                
+                <div class="contact-info-row">
+                    <div class="c-item">
+                        <span class="c-icon">📞</span>
+                        <h3>Mobile</h3>
+                        <p><a href="tel:+916268281490">+91 6268281490</a></p>
+                    </div>
+                    <div class="c-item">
+                        <span class="c-icon">✉️</span>
+                        <h3>Email</h3>
+                        <p><a href="mailto:anitajha513@gmail.com">anitajha513@gmail.com</a></p>
+                    </div>
+                </div>
 
-  <!-- Projects -->
-  <h2>Projects</h2>
-  <p><b>1. Animated Portfolio Website:</b> Created a fully responsive and animated personal portfolio using HTML and CSS.</p>
-  <p><b>2. UI/UX Mobile App Design (Canva + Figma):</b> Designed an interactive prototype for a task management app focusing on minimal design.</p>
-  <p><b>3. Promotional Video Editing (VSDC):</b> Produced and edited short promotional clips and reels with advanced transitions and effects for social media.</p>
+                <form id="contactForm" class="simple-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" placeholder="Your Phone Number" required>
+                    <textarea placeholder="Which saree do you want to buy?" rows="3"></textarea>
+                    <button type="submit" class="btn btn-primary">Send Enquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-  <hr>
+    <section id="payment" class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Secure Payment Mode</h2>
+            <p class="section-desc">Choose how you want to pay.</p>
+            
+            <div class="payment-options">
+                <div class="pay-card" onclick="openModal('modal-card')">
+                    <div class="pay-icon">💳</div>
+                    <h3>Pay via Card</h3>
+                    <p>Credit / Debit Cards</p>
+                </div>
+                <div class="pay-card" onclick="openModal('modal-upi')">
+                    <div class="pay-icon">📱</div>
+                    <h3>Pay via UPI</h3>
+                    <p>GPay / PhonePe / Paytm</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Achievements -->
-  <h2>Achievements & Highlights</h2>
-  <ul>
-    <li>Designed multiple UI/UX layouts for web & mobile prototypes.</li>
-    <li>Developed front-end websites with interactive designs.</li>
-    <li>Edited and managed high-quality videos for presentations.</li>
-    <li>Contributed to university tech fest projects.</li>
-  </ul>
+    <footer>
+        <div class="container">
+            <p>© 2025 Anita Collections. All rights reserved.</p>
+            <p>Contact: +91 6268281490 | anitajha513@gmail.com</p>
+        </div>
+    </footer>
 
-  <hr>
+    <div id="modal-card" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-card')">&times;</button>
+            <h2>Card Payment</h2>
+            <form class="fake-payment-form" onsubmit="event.preventDefault(); alert('Order Placed Successfully!'); closeModal('modal-card');">
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Expiry</label>
+                        <input type="text" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="password" placeholder="123" required>
+                    </div>
+                </div>
+                <button class="btn btn-primary full-width">Pay Now</button>
+            </form>
+        </div>
+    </div>
 
-  <!-- Career Aspiration -->
-  <h2>Career Aspiration</h2>
-  <p>
-    To become a skilled Front-End Developer and UI/UX Designer, combining creative design 
-    with technical precision to deliver visually engaging digital solutions.
-  </p>
+    <div id="modal-upi" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-upi')">&times;</button>
+            <h2>Pay via UPI</h2>
+            <div class="upi-container">
+                <p>Pay to Mobile: <strong>6268281490</strong></p>
+                <div class="qr-placeholder"><span>[ QR Code ]</span></div>
+                <form class="fake-payment-form" onsubmit="event.preventDefault(); alert('Payment Verified! Order Placed.'); closeModal('modal-upi');">
+                    <div class="form-group">
+                        <label>Transaction ID (UTR)</label>
+                        <input type="text" placeholder="Enter UTR Number" required>
+                    </div>
+                    <button class="btn btn-primary full-width">Verify & Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-  <hr>
+    <button id="backToTop" title="Go to top">↑</button>
 
-  <!-- Personal Details -->
-  <h2>Personal Details</h2>
-  <p><b>Date of Birth:</b> 11 June 2004</p>
-  <p><b>Languages Known:</b> Hindi, English</p>
-  <p><b>Location Preference:</b> Open to relocation</p>
-
-  <hr>
-
-  <!-- Footer -->
-  <p>© 2025 Rahul Jha | Designed & Written in pure HTML</p>
-
+    <script src="script.js"></script>
 </body>
 </html>
-
