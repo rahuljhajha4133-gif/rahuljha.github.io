@@ -120,7 +120,77 @@
             .nav-links { flex-direction: column; width: 100%; gap: 25px; }
             .hero h1 { font-size: 2.2rem; }
         }
+        /* --- GALLERY MODAL --- */
+.gallery-modal-content {
+    background: var(--bg-card); width: 95%; max-width: 900px;
+    border-radius: 10px; padding: 20px; border: 1px solid var(--accent-gold);
+    display: flex; gap: 20px; flex-wrap: wrap; max-height: 90vh; overflow-y: auto;
+}
+.gallery-left { flex: 1; min-width: 300px; }
+.main-view { width: 100%; height: 400px; border-radius: 8px; overflow: hidden; margin-bottom: 10px; border: 1px solid #333; }
+.main-view img { width: 100%; height: 100%; object-fit: cover; }
+.thumbs { display: flex; gap: 10px; justify-content: center; }
+.thumb { width: 60px; height: 60px; border-radius: 5px; object-fit: cover; cursor: pointer; opacity: 0.6; border: 2px solid transparent; }
+.thumb:hover { opacity: 1; border-color: var(--accent-gold); }
+
+.gallery-right { flex: 1; min-width: 300px; text-align: left; }
+.gallery-right h2 { color: var(--accent-pink); margin-bottom: 10px; }
+.gallery-price { font-size: 1.5rem; font-weight: bold; color: var(--accent-gold); display: block; margin-bottom: 20px; }
+
+/* --- CHATBOT --- */
+#chatbot-btn { position: fixed; bottom: 85px; right: 30px; width: 50px; height: 50px; background: var(--accent-pink); color: white; border-radius: 50%; cursor: pointer; box-shadow: 0 5px 15px rgba(255,64,129,0.5); display: flex; align-items: center; justify-content: center; font-size: 25px; z-index: 999; }
+.chat-window { position: fixed; bottom: 100px; right: 30px; width: 300px; height: 400px; background: var(--bg-card); border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 1000; display: none; flex-direction: column; border: 1px solid var(--accent-gold); overflow: hidden; }
+.chat-header { background: var(--accent-pink); color: white; padding: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+.chat-body { flex: 1; padding: 10px; overflow-y: auto; font-size: 0.9rem; display: flex; flex-direction: column; gap: 10px; }
+.chat-input-area { padding: 10px; border-top: 1px solid #333; display: flex; }
+.chat-input-area input { flex: 1; padding: 8px; border-radius: 5px; }
+.bot-msg { align-self: flex-start; background: #333; color: white; padding: 8px; border-radius: 10px; max-width: 80%; }
+.user-msg { align-self: flex-end; background: var(--accent-gold); color: black; padding: 8px; border-radius: 10px; max-width: 80%; }
+
+@media (max-width: 768px) {
+    .gallery-modal-content { flex-direction: column; }
+    .main-view { height: 300px; }
+}
         /* --- CSS END --- */
+        /* --- GALLERY MODAL CSS --- */
+        .gallery-modal-content {
+            background: var(--bg-card); width: 95%; max-width: 900px;
+            border-radius: 10px; padding: 20px; border: 1px solid var(--accent-gold);
+            display: flex; gap: 20px; flex-wrap: wrap; max-height: 90vh; overflow-y: auto;
+        }
+        .gallery-left { flex: 1; min-width: 300px; }
+        .main-view { width: 100%; height: 400px; border-radius: 8px; overflow: hidden; margin-bottom: 10px; border: 1px solid #333; }
+        .main-view img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .thumbs { display: flex; gap: 10px; justify-content: center; }
+        .thumb { width: 60px; height: 60px; border-radius: 5px; object-fit: cover; cursor: pointer; opacity: 0.6; border: 2px solid transparent; transition: 0.3s; }
+        .thumb:hover, .thumb.active { opacity: 1; border-color: var(--accent-gold); }
+
+        .gallery-right { flex: 1; min-width: 300px; text-align: left; }
+        .gallery-right h2 { font-family: var(--font-heading); color: var(--accent-pink); margin-bottom: 10px; }
+        .gallery-right p { color: var(--text-muted); margin-bottom: 15px; }
+        .gallery-price { font-size: 1.5rem; font-weight: bold; color: var(--accent-gold); margin-bottom: 20px; display: block; }
+
+        /* --- CHATBOT CSS --- */
+        #chatbot-btn { position: fixed; bottom: 85px; right: 30px; width: 50px; height: 50px; background: var(--accent-pink); color: white; border-radius: 50%; cursor: pointer; box-shadow: 0 5px 15px rgba(255,64,129,0.5); display: flex; align-items: center; justify-content: center; font-size: 25px; z-index: 999; transition: 0.3s; }
+        #chatbot-btn:hover { transform: scale(1.1); }
+
+        .chat-window { position: fixed; bottom: 100px; right: 30px; width: 300px; height: 400px; background: var(--bg-card); border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 1000; display: none; flex-direction: column; border: 1px solid var(--accent-gold); overflow: hidden; }
+        .chat-header { background: var(--accent-pink); color: white; padding: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .chat-body { flex: 1; padding: 10px; overflow-y: auto; font-size: 0.9rem; display: flex; flex-direction: column; gap: 10px; }
+        
+        .chat-input-area { padding: 10px; border-top: 1px solid #333; display: flex; }
+        .chat-input-area input { flex: 1; padding: 8px; border-radius: 5px; border: none; outline: none; margin-right: 5px; }
+        .chat-input-area button { background: var(--accent-gold); border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+        .bot-msg { align-self: flex-start; background: #333; color: white; padding: 8px; border-radius: 10px 10px 10px 0; max-width: 80%; margin-bottom: 5px; }
+        .user-msg { align-self: flex-end; background: var(--accent-gold); color: black; padding: 8px; border-radius: 10px 10px 0 10px; max-width: 80%; margin-bottom: 5px; }
+
+        @media (max-width: 768px) {
+            .chat-window { width: 85%; right: 7.5%; bottom: 90px; }
+            .gallery-modal-content { flex-direction: column; }
+            .main-view { height: 300px; }
+        }
     </style>
 </head>
 <body>
@@ -131,15 +201,22 @@
             
             <div class="mobile-menu-icon" id="mobileMenuBtn">☰</div>
 
-            <nav class="nav-menu" id="navMenu">
+           <nav class="nav-menu" id="navMenu">
                 <ul class="nav-links">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#collection" class="nav-link">Sarees</a></li>
-                    <li><a href="#features" class="nav-link">Why Us</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="#payment" class="nav-btn nav-link">Pay Now</a></li>
-                    <li><a href="login.html" class="login-btn">Login</a></li>
-                    <li><a href="signup.html" class="signup-btn">Sign Up</a></li>
+                    <li><a onclick="closeMenu()" href="#home" class="nav-link">Home</a></li>
+                    <li><a onclick="closeMenu()" href="#collection" class="nav-link">Sarees</a></li>
+                    <li><a onclick="closeMenu()" href="#contact" class="nav-link">Contact</a></li>
+                    <li><a onclick="closeMenu()" href="#payment" class="nav-btn nav-link">Pay Now</a></li>
+                    
+                    <div id="auth-buttons" style="display: flex; gap: 10px; align-items: center;">
+                        <li><a onclick="openModal('modal-login'); closeMenu()" class="login-btn">Login</a></li>
+<li><a onclick="openModal('modal-signup'); closeMenu()" class="signup-btn">Sign Up</a></li>
+                    </div>
+
+                    <div id="user-profile" style="display: none; align-items: center; gap: 10px;">
+                        <li style="color: var(--accent-gold); font-weight: bold;">Hi, <span id="display-name">User</span>! 👋</li>
+                        <li><button onclick="logoutUser()" style="background: red; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Logout</button></li>
+                    </div>
                 </ul>
             </nav>
         </div>
@@ -170,7 +247,7 @@
             
             <div class="product-grid">
                 
-                <div class="product-card">
+                <div class="product-card" onclick="openGallery('saree1')">
                     <div class="product-image">
                         <img src="saree1.jpg" alt="Emerald Green Royal Silk Saree">
                         <span class="discount-tag">New Arrival</span>
@@ -189,7 +266,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" onclick="openGallery('saree2')">
                     <div class="product-image">
                         <img src="saree2.jpg" alt="Regal Purple Silk Saree">
                         <span class="discount-tag">New Arrival</span>
@@ -208,7 +285,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" onclick="openGallery('saree3')">
                     <div class="product-image">
                         <img src="saree3.jpg" alt="Lavender Georgette Saree">
                         <span class="discount-tag">New Arrival</span>
@@ -227,7 +304,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" onclick="openGallery('saree4')">
                     <div class="product-image">
                         <img src="saree4.jpg" alt="Peach Designer Saree">
                         <span class="discount-tag">New Arrival</span>
@@ -367,7 +444,7 @@
             <h2>Pay via UPI</h2>
             <div class="upi-container">
                 <p>Pay to Mobile: <strong>6268281490</strong></p>
-                <div class="qr-placeholder"><span>[ QR Code ]</span></div>
+               <img src="my-qr.jpg" alt="Scan to Pay" style="width: 100%; max-width: 250px; display: block; margin: 10px auto; border: 2px solid #ffd700; border-radius: 10px;"> 
                 <form class="fake-payment-form" onsubmit="event.preventDefault(); alert('Payment Verified! Order Placed.'); closeModal('modal-upi');">
                     <div class="form-group">
                         <label>Transaction ID (UTR)</label>
@@ -382,29 +459,129 @@
     <button id="backToTop" title="Go to top">↑</button>
 <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // Mobile Menu
+
+            // --- 1. SAREE DATA (Gallery Logic) ---
+            const products = {
+                'saree1': { name: 'Emerald Green Royal Silk', price: '1200', desc: 'Perfect for weddings.', images: ['saree1.jpg', 'saree1-1.jpg',] },
+                'saree2': { name: 'Regal Purple Silk', price: '1500', desc: 'Elegant evening wear.', images: ['saree2.jpg', 'saree2-2.jpg',] },
+                'saree3': { name: 'Lavender Leaf Embroidery', price: '1000', desc: 'Lightweight georgette.', images: ['saree3.jpg', 'saree3-3.jpg',] },
+                'saree4': { name: 'Peach Soft Silk Designer', price: '999', desc: 'Festive special.', images: ['saree4.jpg', 'saree4-4.jpg',] }
+            };
+
+            window.openGallery = (id) => {
+                const p = products[id];
+                if(!p) return;
+
+                document.getElementById('galleryTitle').innerText = p.name;
+                document.getElementById('galleryDesc').innerText = p.desc;
+                document.getElementById('galleryPrice').innerText = '₹' + p.price;
+                document.getElementById('mainImg').src = p.images[0];
+                
+                document.getElementById('whatsappBtn').onclick = function() {
+                    window.buyOnWhatsapp(p.name, p.price);
+                };
+
+                const container = document.getElementById('thumbContainer');
+                container.innerHTML = '';
+                p.images.forEach(imgSrc => {
+                    let img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.className = 'thumb';
+                    img.onclick = function() { document.getElementById('mainImg').src = imgSrc; };
+                    container.appendChild(img);
+                });
+                openModal('modal-gallery');
+            };
+
+            // --- 2. CHATBOT LOGIC ---
+            window.toggleChat = () => {
+                const w = document.getElementById('chatWindow');
+                w.style.display = (w.style.display === 'flex') ? 'none' : 'flex';
+            };
+
+            window.sendMessage = () => {
+                const input = document.getElementById('chatInput');
+                const body = document.getElementById('chatBody');
+                const txt = input.value.toLowerCase();
+                if(!txt) return;
+
+                body.innerHTML += `<div class="user-msg">${input.value}</div>`;
+                input.value = '';
+
+                setTimeout(() => {
+                    let reply = "Please contact on WhatsApp: +91 6268281490";
+                    if(txt.includes('price') || txt.includes('rate')) reply = "Starting from ₹1000.";
+                    else if(txt.includes('hi') || txt.includes('hello')) reply = "Namaste! Kaise madad karu?";
+                    else if(txt.includes('return')) reply =  "Thank you so much for choosing us! We follow a no-return policy because each item is prepared and quality-checked individually. But don't worry — if there is any issue (wrong product, damage, size mismatch), just contact us within 24 hours and we'll help you immediately. 😊";
+                    
+                    body.innerHTML += `<div class="bot-msg">${reply}</div>`;
+                    body.scrollTop = body.scrollHeight;
+                }, 800);
+            };
+
+            // --- 3. GENERAL ---
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navMenu = document.getElementById('navMenu');
-            
             if (mobileMenuBtn) {
                 mobileMenuBtn.addEventListener('click', () => {
                     navMenu.classList.toggle('active');
                     mobileMenuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
                 });
             }
+            window.closeMenu = () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            };
 
-            // WhatsApp Function
+            window.openModal = (id) => { document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+            window.closeModal = (id) => { document.getElementById(id).classList.remove('open'); document.body.style.overflow='auto'; }
+            window.onclick = (e) => { if(e.target.classList.contains('modal-overlay')) closeModal(e.target.id); }
+
             window.buyOnWhatsapp = (sareeName, price) => {
-                let phoneNumber = "916268281490";
-                let message = `Hello Anita Collections! 👋\n\nI want to buy:\n🛍️ *Product:* ${sareeName}\n💰 *Price:* ₹${price}\n\nPlease confirm availability.`;
-                let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-                window.open(url, '_blank');
+                let phone = "916268281490";
+                let msg = `Hello, I want to buy ${sareeName} Price: ${price}`;
+                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
             };
         });
     </script>
     <script src="script.js"></script>
+    <div id="modal-gallery" class="modal-overlay">
+        <div class="gallery-modal-content">
+            <span class="close-modal" onclick="closeModal('modal-gallery')">&times;</span>
+            
+            <div class="gallery-left">
+                <div class="main-view">
+                    <img id="mainImg" src="" alt="Main Saree">
+                </div>
+                <div class="thumbs" id="thumbContainer">
+                    </div>
+            </div>
+
+            <div class="gallery-right">
+                <h2 id="galleryTitle">Saree Name</h2>
+                <p id="galleryDesc">Description here...</p>
+                <span id="galleryPrice" class="gallery-price">₹0</span>
+                <p>✅ Premium Fabric | ✅ Authenticity Guaranteed</p>
+                <button class="btn-primary full-width" id="whatsappBtn">Buy on WhatsApp 💬</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="chatbot-btn" onclick="toggleChat()">🤖</div>
+    
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>Anita AI Assistant</span>
+            <span style="cursor:pointer;" onclick="toggleChat()">✖</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-msg">Namaste! Welcome to Anita Collections. (Main aapki kya madad karu?)</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Ask price, return policy...">
+            <button onclick="sendMessage()">➤</button>
+        </div>
+    </div>
 </body>
 </html>
-
 
