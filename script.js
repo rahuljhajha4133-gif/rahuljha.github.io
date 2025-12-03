@@ -251,3 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Page load hote hi check karo
     updateUserUI();
+    // --- OPENING ANIMATION LOGIC ---
+            setTimeout(() => {
+                document.getElementById('saree-overlay').classList.add('saree-open');
+            }, 1000); // 1 second baad parda hatega
